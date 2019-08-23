@@ -9,6 +9,10 @@
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
+<<<<<<< HEAD
+=======
+    "bootstrap-vue": "^2.0.0-rc.28",
+>>>>>>> gameroom
     "buefy": "^0.8.2",
     "core-js": "^2.6.5",
     "firebase": "^6.4.0",
