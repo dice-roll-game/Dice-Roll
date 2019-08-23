@@ -3,7 +3,6 @@
     <div id="playerList" class="column is-one-fifth" style="border-radius:10px">
       <b-menu style="padding-left:30px; padding-top:50px">
         <b-menu-list>
-          <b-menu-item style="color:white" label="Bet: $200  "></b-menu-item>
           <b-menu-item style="color:white" label="Player List:"></b-menu-item>
           <b-menu-item
             class="card"
