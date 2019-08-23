@@ -42,7 +42,7 @@
           <div class="card scores">
             <h1
               style="margin-bottom: 10px"
-              v-for="player in room.players"
+              v-for="player in sortedResult"
               :key="player.id"
             >{{player.username}} score: {{player.score}}</h1>
           </div>
@@ -229,6 +229,25 @@ export default {
     },
     progressComp() {
       return (this.room.stage - 1) * 33 + 1;
+    },
+    sortedResult(){
+      
+      let players=this.room.players
+      console.log(players)
+      for(let i=0;i<players.length;i++){
+        for(let j=i+1;j<players.length;j++){
+
+          if(players[i].score>players[j].score){
+            let temp = players[i]
+            players[i]=players[j]
+            players[j]=temp
+
+          }
+        }
+      }
+      return players
+
+      // return this.room.players.sort((a,b)=>(a.score < b.score) ? 1 : -1)
     }
   }
 };
