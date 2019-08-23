@@ -74,7 +74,7 @@ export default new Vuex.Store({
           localStorage.setItem('username', username)
           commit('setId' , data.id)
           router.push({ path: `/room/${data.id}` });
-          console.log('Sukses Add Data', data.id)
+          // console.log('Sukses Add Data', data.id)
         })
         .catch(err => {
           console.log(err)
@@ -102,7 +102,7 @@ export default new Vuex.Store({
           localStorage.setItem("username", username)
         })
         .catch(err => {
-          console.log(err)
+          console.log(err , ' error ......')
         })
     }
   }
