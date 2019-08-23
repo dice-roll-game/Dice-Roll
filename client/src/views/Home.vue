@@ -13,14 +13,15 @@
     <input type="submit" value="cancel" @click="TempId = false" v-if="TempId" />
 
     <div style="display:flex;justify-content:center;flex-direction:column;">
-      <!-- <center>
+      <center>
   <div class="box" width="25%" style="margin-top:20px;width:400px;background-color:hsl(48, 100%, 67%);">
     <p> Life is a gamble </p>
     <p> So why don't you roll the dice </p>
+    <br>
+    <p>---Anonymous---</p>
   </div>
-      </center>-->
-
-      <div style="margin-top:20px;">
+      </center>
+      <div style="margin-top:140px;">
         <b-button
           size="is-medium"
           @click="isCreateModalActive = true"
@@ -54,7 +55,6 @@
               <b-input
                 type="text"
                 v-model="username"
-                password-reveal
                 placeholder="Your name"
                 required
               ></b-input>
@@ -78,6 +78,7 @@
 import navbar from "../components/navbar";
 import createRoom from "../components/createRoom";
 // @ is an alias to /src
+import Vue from 'vue'
 import db from "../db";
 import ModalUser from "../components/ModalUser";
 export default {
@@ -132,6 +133,11 @@ export default {
       this.TempId = id;
     },
     CreateRoom() {
+      Vue.swal.fire({
+      title: 'Creating your Room...',
+      allowOutsideClick: () => !Vue.swal.isLoading()
+      })
+      Vue.swal.showLoading()
       let { username, RoomName } = this;
       this.$store.dispatch("createRoom", { username, RoomName });
       this.username = "";

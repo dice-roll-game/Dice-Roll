@@ -76,6 +76,7 @@ export default new Vuex.Store({
           localStorage.setItem('username', username)
           localStorage.setItem("userId" , tempId)
           commit('setId' , tempId)
+          Vue.swal.close()
           router.push({ path: `/room/${data.id}` });
           // console.log('Sukses Add Data', data.id)
         })
@@ -108,6 +109,7 @@ export default new Vuex.Store({
             .set(obj)
         })
         .then(res => {
+          Vue.swal.close()
           router.push({ path: `/room/${id}` })
           localStorage.setItem("username", username)
           localStorage.setItem("userId" , objData.id)
