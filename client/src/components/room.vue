@@ -10,7 +10,7 @@
             </div>
             </div>
             <div class="column is-half">
-            <b-button  type="is-warning">Join Room</b-button>
+            <b-button  type="is-warning" @click="isJoinModalActive = true" >Join Room</b-button>
             </div>
             </div>
         
@@ -34,12 +34,53 @@
         </div>
         </div>
 
+         <!-- Form untuk Join room -->
+      <b-modal :active.sync="isJoinModalActive" :width=400  >
+                <form v-on:submit.prevent="gotoRoomSpace"  >
+                <div  class="modal-card" style="width: auto">
+                    <header class="modal-card-head" >
+                        <p class="modal-card-title">Join Room</p>
+                    </header>
+
+                    <section class="modal-card-body">
+                        <b-field label="Your Name">
+                            <b-input
+                                type="text"
+                                v-model="playerName"
+                                placeholder="Your name"
+                                required>
+                            </b-input>
+                        </b-field>
+
+                       
+    
+                    </section>
+                    <footer class="modal-card-foot">
+                        <button class="button" type="button" @click="isJoinModalActive = false">Close</button>
+                        <button class="button"   >Submit</button>
+                    </footer>
+                </div>
+            </form>
+        </b-modal>
+
       </div>
 
 </template>
 
 <script>
 export default {
+  data(){
+    return{
+      isJoinModalActive:false
+    }
+  },
+  
+  methods : {
+    
+    gotoRoomSpace(){
+      this.$router.push({path:"/"})
+    }
+  }
 
 }
 </script>

@@ -3,16 +3,28 @@
     
 
     <div style="display:flex;justify-content:center;flex-direction:column;">
+
+       <!-- <center>
+  <div class="box" width="25%" style="margin-top:20px;width:400px;background-color:hsl(48, 100%, 67%);">
+    <p> Life is a gamble </p>
+    <p> So why don't you roll the dice </p>
+  </div>
+</center> -->
+
     <div style="margin-top:20px;">
      <b-button size="is-medium"  @click="isCreateModalActive = true" type="is-warning">Create New Room</b-button>
     </div>
 
     <div >
-      <b-button style="margin-top:20px;"  @click="isJoinModalActive = true" size="is-medium" type="is-warning">Join Room</b-button>
+      <b-button style="margin-top:20px;"  @click="gotoRoomList" size="is-medium" type="is-warning">Join Room</b-button>
     </div>
+
+ 
+
+  <!-- Modal untuk Create Room -->
     </div>
       <b-modal :active.sync="isCreateModalActive" :width=400  >
-                <form  >
+                <form  v-on:submit.prevent="CreateRoom">
                 <div  class="modal-card" style="width: auto">
                     <header class="modal-card-head" >
                         <p class="modal-card-title">Create Room</p>
@@ -21,8 +33,8 @@
                         <b-field label="Room Name">
                             <b-input
                                 type="text"
-                                :value="email"
-                                placeholder="Your email"
+                                placeholder="Room Name"
+                                v-model="roomName"
                                 required>
                             </b-input>
                         </b-field>
@@ -30,7 +42,7 @@
                         <b-field label="Room master ">
                             <b-input
                                 type="text"
-                                :value="password"
+                                v-model="roomMaster"
                                 password-reveal
                                 placeholder="Your name"
                                 required>
@@ -40,58 +52,22 @@
                            <b-field label="Money">
                             <b-input
                                 type="number"
+                                v-model="roomMasterMoney"
                                 
-                                password-reveal
                                 required>
                             </b-input>
                         </b-field>
                         
-
-                        <b-checkbox>Remember me</b-checkbox>
                     </section>
                     <footer class="modal-card-foot">
                         <button class="button" type="button" @click="isCreateModalActive = false">Close</button>
-                        <button class="button is-warning" >Login</button>
+                        <button class="button" >Create</button>
                     </footer>
                 </div>
             </form>
         </b-modal>
 
-    <!-- Form untuk Join room -->
-      <b-modal :active.sync="isJoinModalActive" :width=400  >
-                <form  >
-                <div  class="modal-card" style="width: auto">
-                    <header class="modal-card-head" >
-                        <p class="modal-card-title">Join Room</p>
-                    </header>
-
-                    <section class="modal-card-body">
-                        <b-field label="Room Name">
-                            <b-input
-                                type="text"
-                                :value="email"
-                                placeholder="Your email"
-                                required>
-                            </b-input>
-                        </b-field>
-
-                           <b-field label="Money">
-                            <b-input
-                                type="number"
-                                
-                                password-reveal
-                                required>
-                            </b-input>
-                        </b-field>
-    
-                    </section>
-                    <footer class="modal-card-foot">
-                        <button class="button" type="button" @click="isJoinModalActive = false">Close</button>
-                        <button class="button is-warning" >Login</button>
-                    </footer>
-                </div>
-            </form>
-        </b-modal>
+   
 
 
     
@@ -114,11 +90,36 @@ export default {
       isCreateModalActive:false,
       roomName : "",
       roomMaster:"",
+      roomMasterMoney:"",
+      playerName : "",
       money:Number
     }
+  },
+  methods : {
+
+    CreateRoom(){
+
+      this.$router.push({path:"/roomlist"})
+
+    },
+
+    gotoRoomList(){
+
+       this.$router.push({path:"/roomlist"})
+
+    },
+
+    JoinRoom(){
+
+      this.$router.push({path:"/roomlist"})
+
+    }
+
+
   }
 };
 </script>
+
 
 <style scoped>
 /* .home{
