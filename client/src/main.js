@@ -3,18 +3,19 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import Buefy from 'buefy'
+import Vuex from 'vuex'
 import 'buefy/dist/buefy.css'
 // import BootstrapVue from 'bootstrap-vue'
 // import 'bootstrap/dist/css/bootstrap.css'
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+
 // Vue.use(BootstrapVue)
-Vue.use(Buefy)
-
 Vue.config.productionTip = false
-
+Vue.use(Buefy)
+Vue.use(Vuex)
 new Vue({
-  router,
   store,
+  router,
   render: h => h(App)
 }).$mount('#app')
