@@ -88,6 +88,7 @@ import navbar from "../components/navbar";
 import createRoom from "../components/createRoom";
 // @ is an alias to /src
 import db from "../db";
+import Vue from 'vue'
 import ModalUser from "../components/ModalUser";
 export default {
   name: "home",
@@ -141,6 +142,11 @@ export default {
       this.TempId = id;
     },
     CreateRoom() {
+      Vue.swal.fire({
+        title: 'Creating your rooom...',
+        allowOutsideClick: () => !Vue.swal.isLoading()
+      })
+      Vue.swal.showLoading()
       let { username, RoomName } = this;
       this.$store.dispatch("createRoom", { username, RoomName });
       this.username = "";

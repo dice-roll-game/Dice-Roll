@@ -17,12 +17,7 @@
           <div class="player-list" v-for="player in room.players" :key="player.id">{{player.username}}</div>
         </div>
         <div class="column is-half">
-          <div class="player-list">status</div>
-          <div class="player-list">status</div>
-          <div class="player-list">status</div>
-          <div class="player-list">status</div>
-          <div class="player-list">status</div>
-          <div class="player-list">status</div>
+          <div class="player-list" v-for="player in room.players" :key="player.id" ><i class="fab fa-500px"></i></div>
         </div>
       </div>
     </div>
@@ -69,6 +64,7 @@ export default {
     joinRoom (){
       console.log('ffff')
       // console.log(room)
+      this.isJoinModalActive = false
       this.$store.dispatch("joinAroom", { id : this.room.id  , username: this.playerName });
     }
   }

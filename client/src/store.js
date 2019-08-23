@@ -44,6 +44,7 @@ export default new Vuex.Store({
         username
       })
       .then(data=>{
+        
         return db.collection("room")
         .add({
           players: [
@@ -73,6 +74,7 @@ export default new Vuex.Store({
       }).then(data => {
           localStorage.setItem('username', username)
           commit('setId' , data.id)
+          Vue.swal.close()
           router.push({ path: `/room/${data.id}` });
           // console.log('Sukses Add Data', data.id)
         })
