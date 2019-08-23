@@ -42,9 +42,9 @@
           <div class="card scores">
             <h1
               style="margin-bottom: 10px"
-              v-for="player in sortedResult"
-              :key="player.id"
-            >{{player.username}} score: {{player.score}}</h1>
+              v-for="(player, index) in sortedResult"
+              :key="index"
+            ><span v-if="index==0" >Winner <i class="fas fa-crown"></i></span> {{player.username}} score: {{player.score}} </h1>
           </div>
         </div>
       </div>
