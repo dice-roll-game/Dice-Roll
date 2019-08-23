@@ -158,7 +158,7 @@ export default {
         this.firstDice = one + ".png";
         this.secondDice = two + ".png";
         this.disabled = true;
-      }, 5000);
+      }, 10000);
     },
     playSound(sound) {
       if (sound) {
@@ -183,6 +183,8 @@ export default {
     },
     stage(newVal, oldVal) {
       if (oldVal < 3) {
+        this.disabled = true;
+          this.submitted = false
         this.over = false;
         this.rollDice(
           this.room.dices[newVal - 1].firstDice,
@@ -199,7 +201,7 @@ export default {
           }
           this.disabled = true;
           this.submitted = false;
-        }, 10000);
+        }, 12000);
       }
       if (newVal == 4) {
         this.over = true;

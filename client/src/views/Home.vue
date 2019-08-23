@@ -6,15 +6,6 @@
       <input type="text" v-model="RoomName" placeholder="enter room Name" />
       <input type="submit" />
     </form> -->
-
-    <table>
-      <tr v-for="room in rooms" :key="room.id">
-        <th>{{room.name}}</th>
-        <th>
-          <input type="submit" value="Join Room" @click="renderJoin(room.id)" />
-        </th>
-      </tr>
-    </table>
     <form v-on:submit.prevent="JoinRoom(TempId)" v-if="TempId">
       <input type="text" placeholder="enter your name" v-model="username2" />
       <input type="submit" value="Join" />
