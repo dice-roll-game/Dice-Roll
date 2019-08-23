@@ -39,11 +39,13 @@ export default new Vuex.Store({
       let random4 =  Math.floor(Math.random() * 5 ) + 1
       let random5 =  Math.floor(Math.random() * 5 ) + 1
       let random6 =  Math.floor(Math.random() * 5 ) + 1
+      let tempId ;
       db.collection("users")
       .add({
         username
       })
       .then(data=>{
+        tempId = data.id
         return db.collection("room")
         .add({
           players: [
@@ -72,8 +74,8 @@ export default new Vuex.Store({
         })
       }).then(data => {
           localStorage.setItem('username', username)
-          localStorage.setItem("userId" , data.id)
-          commit('setId' , data.id)
+          localStorage.setItem("userId" , tempId)
+          commit('setId' , tempId)
           router.push({ path: `/room/${data.id}` });
           // console.log('Sukses Add Data', data.id)
         })
