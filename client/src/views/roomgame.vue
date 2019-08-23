@@ -40,7 +40,8 @@ export default {
           obj = { ...data.data() };
         //   let arr = data.data().players;
           obj.players =  obj.players.map(el=>{
-              if(el.username == localStorage.getItem("username")){
+              if(el.userId == localStorage.getItem("userId")){
+                  console.log(el , ' di rooom game')
                   el.score +=10;
               }
               return el

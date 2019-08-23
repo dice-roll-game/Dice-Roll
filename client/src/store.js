@@ -72,6 +72,7 @@ export default new Vuex.Store({
         })
       }).then(data => {
           localStorage.setItem('username', username)
+          localStorage.setItem("userId" , data.id)
           commit('setId' , data.id)
           router.push({ path: `/room/${data.id}` });
           // console.log('Sukses Add Data', data.id)
@@ -82,15 +83,22 @@ export default new Vuex.Store({
     },
     joinAroom({ commit, state, dispatch }, payload) {
       let obj;
+      let objData;
       let { username, id } = payload
-      db.collection("room").doc(id)
+      db.collection("users")
+      .add({
+        username
+      })
+      .then(data=>{
+        objData = data
+        return  db.collection("room").doc(id)
         .get()
-        .then(data => {
+      })
+      .then(data => {
           obj = { ...data.data() }
           let arr = data.data().players
           arr.push({
-            username,
-            score : 0
+            userId : objData.id  , username , score : 0 
           })
           obj.players = arr
           console.log(obj)
@@ -100,6 +108,7 @@ export default new Vuex.Store({
         .then(res => {
           router.push({ path: `/room/${id}` })
           localStorage.setItem("username", username)
+          localStorage.setItem("userId" , objData.id)
         })
         .catch(err => {
           console.log(err , ' error ......')
