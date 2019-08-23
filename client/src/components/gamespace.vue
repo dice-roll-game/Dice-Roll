@@ -55,6 +55,7 @@
 <script>
 import db from "@/db.js";
 import firebase from "firebase/app";
+import Vue from 'vue'
 
 export default {
   data() {
@@ -205,6 +206,7 @@ export default {
       }
       if (newVal == 4) {
         this.over = true;
+ 
       }
     },
     playing(newVal, oldVal) {
