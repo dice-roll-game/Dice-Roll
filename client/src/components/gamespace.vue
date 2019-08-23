@@ -199,7 +199,7 @@ export default {
           }
           this.disabled = true;
           this.submitted = false;
-        }, 7000);
+        }, 10000);
       }
       if (newVal == 4) {
         this.over = true;
