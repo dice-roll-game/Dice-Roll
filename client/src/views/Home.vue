@@ -76,7 +76,6 @@
 
 <script>
 import navbar from "../components/navbar";
-import createRoom from "../components/createRoom";
 // @ is an alias to /src
 import Vue from 'vue'
 import db from "../db";
@@ -101,8 +100,7 @@ export default {
   },
   components: {
     ModalUser,
-    navbar,
-    createRoom
+    navbar
   },
   mounted() {
     this.$store.dispatch("getRoom");
